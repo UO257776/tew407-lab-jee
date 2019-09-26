@@ -44,6 +44,8 @@ public class HolaMundoServlet extends HttpServlet {
 		@SuppressWarnings("unchecked")
 		Vector<String> listado = (Vector<String>) request.getSession().getAttribute("listado");
 		
+		Integer contador = (Integer) getServletContext().getAttribute("contador");
+				
 		if (listado==null) {
 			listado = new Vector<String>();
 		}
@@ -53,7 +55,12 @@ public class HolaMundoServlet extends HttpServlet {
 			listado.addElement(nombre);
 		}
 		
+		if (contador == null) {
+			contador = new Integer(1);
+		}
+		
 		request.getSession().setAttribute("listado", listado);
+		getServletContext().setAttribute("contador", new Integer(contador.intValue()+1));
 
 		out.println("Bienvenido a mi primera página web!");
 		out.println("<br>");
@@ -61,6 +68,7 @@ public class HolaMundoServlet extends HttpServlet {
 		for (int i=0; i < listado.size(); i++) {
 			out.println("<br>" + (String)listado.elementAt(i));
 		}
+		out.println("<br><br>" + contador + " visitas");
 		out.println("<center><a href=\"index.html\">volver</a></center>");
 		out.println("</BODY></HTML>");
 	}
