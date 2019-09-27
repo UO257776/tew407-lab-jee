@@ -84,18 +84,31 @@ public class BeanAlumnos implements Serializable{
 			 service = Factories.services.createAlumnosService();
 			 //Salvamos o actualizamos el alumno segun sea una operacion de alta o de edición
 			 if (alumno.getId() == null) {
-			 service.saveAlumno(alumno);
-		 }
-		 else {
-			 service.updateAlumno(alumno);
-		 }
-		 //Actualizamos el javabean de alumnos inyectado en la tabla
-		 alumnos = (Alumno [])service.getAlumnos().toArray(new Alumno[0]);
-		 return "exito";
+				 service.saveAlumno(alumno);
+			 }
+			 else {
+				 service.updateAlumno(alumno);
+			 }
+			 //Actualizamos el javabean de alumnos inyectado en la tabla
+			 alumnos = (Alumno [])service.getAlumnos().toArray(new Alumno[0]);
+			 return "exito";
 		 } catch (Exception e) {
 			 e.printStackTrace();
 			 return "error";
 		 }
+	}
+	
+	public String baja() {
+		AlumnosService service;
+		try {
+			service = Factories.services.createAlumnosService();
+			service.deleteAlumno(alumno.getId());
+			alumnos = (Alumno[]) service.getAlumnos().toArray(new Alumno[0]);
+			return "exito";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "error";
+		}
 	}
 	 
 }
