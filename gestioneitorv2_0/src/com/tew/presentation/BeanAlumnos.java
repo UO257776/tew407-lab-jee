@@ -19,14 +19,13 @@ public class BeanAlumnos implements Serializable{
   // Es necesario inicializarlo para que al entrar desde el formulario de 
   // AltaForm.xhtml se puedan dejar los valores en un objeto existente.
  
-  @ManagedProperty(value="#{alumno}")
-  private BeanAlumno alumno;
+private Alumno alumno = new Alumno();
 
-  public BeanAlumno getAlumno() {
-	return this.alumno;
+public Alumno getAlumno() {
+	return alumno;
 }
 public void setAlumno(Alumno alumno) {
-	this.alumno = (BeanAlumno) alumno;
+	this.alumno = alumno;
 }
 public Alumno[] getAlumnos() {
 	return alumnos;
@@ -39,7 +38,15 @@ private Alumno[] alumnos = null;
     iniciaAlumno(null);
   }
   public void iniciaAlumno(ActionEvent event) {
-	alumno.iniciaAlumno(event);
+	FacesContext facesContext = FacesContext.getCurrentInstance();
+	//Obtenemos el archivo de propiedades correspondiente al idioma que
+	//esta seleccionado y que viene envuelto en facesContext
+	ResourceBundle bundle = facesContext.getApplication().getResourceBundle(facesContext, "msgs");
+	alumno.setId(null);
+	alumno.setIduser(bundle.getString("valorDefectoUserId"));
+	alumno.setNombre(bundle.getString("valorDefectoNombre"));
+	alumno.setApellidos(bundle.getString("valorDefectoApellidos"));
+	alumno.setEmail(bundle.getString("valorDefectoCorreo")); 
   }
   
   
@@ -57,6 +64,7 @@ private Alumno[] alumnos = null;
 	      return "error";
 	    }
 	  }
+  
 	  public String edit() {
 	    AlumnosService service;
 	    try {
@@ -64,7 +72,7 @@ private Alumno[] alumnos = null;
 	      // a través de la factoría
 	      service = Factories.services.createAlumnosService();
 	      //Recargamos el alumno en la tabla de la base de datos por si hubiera cambios.
-	      alumno = (BeanAlumno) service.findById(alumno.getId());
+	      alumno = service.findById(alumno.getId());
 	      return "exito";
 	    } catch (Exception e) {
 	       e.printStackTrace();  
