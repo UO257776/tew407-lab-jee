@@ -125,13 +125,8 @@ private Alumno[] alumnos = null;
 	public void init() {
 		System.out.println("BeanAlumnos - PostConstruct");
 		//Buscamos el alumno en la sesión. Esto es un patrón factoría claramente.
-		alumno = (BeanAlumno) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(new String("alumno"));
-		//si no existe lo creamos e inicializamos
-		if (alumno == null) {
-			System.out.println("BeanAlumnos - No existia");
-			alumno = new BeanAlumno();
-			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put( "alumno", alumno);
-		}
+		AlumnosService service = Factories.services.createAlumnosService();
+		alumno = service.createAlumno();
 	}
 	
 	@PreDestroy

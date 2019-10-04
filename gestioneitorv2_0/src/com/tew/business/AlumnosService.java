@@ -5,6 +5,7 @@ import java.util.List;
 import com.tew.business.exception.EntityAlreadyExistsException;
 import com.tew.business.exception.EntityNotFoundException;
 import com.tew.model.Alumno;
+import com.tew.presentation.BeanAlumno;
 
 /**
  * Este es el interfaz que ofrecer�� cualquier implementaci��n de la clase fachada.
@@ -26,5 +27,6 @@ public interface AlumnosService {
 	void saveAlumno(Alumno alumno) throws EntityAlreadyExistsException;
 	void updateAlumno(Alumno alumno) throws EntityNotFoundException;
 	void deleteAlumno(Long id) throws EntityNotFoundException;
+	BeanAlumno createAlumno();
 
 }
