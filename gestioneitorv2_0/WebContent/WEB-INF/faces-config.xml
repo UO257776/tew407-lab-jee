@@ -51,6 +51,10 @@
       <from-outcome>exito</from-outcome>
       <to-view-id>/listado.xhtml</to-view-id>
     </navigation-case>
+    <navigation-case>
+      <from-outcome>/index.xhtml</from-outcome>
+      <to-view-id>/index.xhtml</to-view-id>
+    </navigation-case>
   </navigation-rule>
   
 <navigation-rule>
