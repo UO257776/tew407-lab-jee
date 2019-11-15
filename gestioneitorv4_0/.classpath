@@ -14,5 +14,11 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/commons-io-1.4.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/httpclient-4.5.6.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/httpcore-4.4.10.jar"/>
+	<classpathentry kind="lib" path="D:/Universidad/TecWeb/lib/json_simple.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
