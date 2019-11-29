@@ -81,7 +81,16 @@ function View() {
 		}
 	}
 	this.loadAlumnoFromForm = function() {
-	} // PENDIENTE DE IMPLEMENTAR
+		// Cogemos el alumno nuevo del formulario.
+		var alumno = {
+			id : $("#id").val(),
+			iduser : $("#iduser").val(),
+			nombre : $("#nombre").val(),
+			apellidos : $("#apellidos").val(),
+			email : $("#email").val()
+		};
+		return alumno;
+	}
 	this.loadAlumnoInForm = function(alumno) {
 	} // PENDIENTE DE IMPLEMENTAR
 	this.getIdAlumno = function(celda) {
